@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Resume Screening</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <h1>AI Resume Screening</h1>
+      <p>Analyze your resume against job descriptions</p>
+    </header>
+
+    <div class="card">
+      <label>Upload Resume (PDF)</label>
+      <input type="file" id="resumeFile" accept=".pdf">
+
+      <label>Upload Job Description (PDF)</label>
+      <input type="file" id="jdFile" accept=".pdf">
+
+      <div class="or-divider"><span>OR</span></div>
+
+      <label>Paste Job Description</label>
+      <textarea id="jdText"></textarea>
+
+      <button onclick="analyzeResume()">🔍 Analyze Resume</button>
+    </div>
+
+    <div id="results" class="results-grid hidden">
+
+      <!-- LEFT -->
+      <div class="card">
+        <h3>✅ Analysis Complete</h3>
+
+        <p><strong>Match Score:</strong> <span id="matchScore"></span>%</p>
+        <p id="predictedRole"></p>
+        <p id="atsScore"></p>
+
+        <h4>Matched Skills</h4>
+        <div id="matchedSkills"></div>
+
+        <h4>Missing Skills</h4>
+        <div id="missingSkills"></div>
+
+        <h4>Resume Suggestions</h4>
+        <ul id="resumeSuggestions"></ul>
+
+        <h4>Learning Roadmap</h4>
+        <div id="learningRoadmap"></div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="card center">
+        <h3>Skill Match Visualization</h3>
+        <canvas id="skillChart" width="220" height="220"></canvas>
+
+        <button onclick="downloadReport()">⬇ Download Report</button>
+      </div>
+
+    </div>
+
+    <div class="logout-container">
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

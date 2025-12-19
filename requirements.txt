@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+sqlalchemy
+PyPDF2
+reportlab
