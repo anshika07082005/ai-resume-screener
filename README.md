@@ -23,6 +23,8 @@ The project follows a **frontend–backend architecture**:
   
 
 ## 🏗️ Project Structure
+```text
+
 ai-resume-screener/
 │
 ├── backend/
