@@ -1,15 +1,14 @@
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException
-from utils.extractor import extract_text_from_pdf
-from utils.skills import extract_skills
-from utils.similarity import skill_similarity
-from utils.fit_score import (
+from backend.utils.extractor import extract_text_from_pdf
+from backend.utils.skills import extract_skills
+from backend.utils.similarity import skill_similarity
+from backend.utils.fit_score import (
     calculate_fit_score,
     predict_role_category,
     ats_score,
     resume_suggestions,
     learning_roadmap
 )
-
 router = APIRouter()
 
 @router.post("/screen-pdf")

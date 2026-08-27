@@ -24,12 +24,11 @@ SKILL_CATEGORIES = {
     ],
 
     "data_science_ml": [
-        "machine learning", "deep learning", "artificial intelligence",
-        "nlp", "computer vision",
-        "pandas", "numpy", "scikit-learn",
-        "tensorflow", "keras", "pytorch"
+        "machine learning", "deep learning", "artificial intelligence", "nlp",
+        "computer vision", "pandas", "numpy", "scikit-learn", "tensorflow", "keras",
+        "pytorch", "xgboost", "random forest", "smote", "feature engineering", "ensemble learning",
     ],
-
+    
     "big_data": [
         "spark", "hadoop", "kafka", "airflow", "hive"
     ],
@@ -55,8 +54,8 @@ SKILL_CATEGORIES = {
     ],
 
     "ai_nlp_tools": [
-        "spacy", "nltk", "huggingface",
-        "transformers", "bert", "llm"
+        "spacy", "nltk", "huggingface", "transformers", "bert", "llm", "llms", "tokenization",
+        "tf-idf", "word embeddings", "text classification", "sentiment analysis", "ner",   
     ],
 
     "data_visualization": [
@@ -69,7 +68,12 @@ SKILL_CATEGORIES = {
     ],
 
     "misc": [
-        "streamlit", "opencv", "postman", "jira", "figma"
+        "streamlit", "opencv",
+    "postman",
+    "jira",
+    "figma",
+    "plotly",
+    "vs code",
     ]
 }
 

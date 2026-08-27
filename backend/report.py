@@ -13,7 +13,7 @@ def download_report(match_score: float, matched_skills: str, missing_skills: str
 
     y = 800
     c.setFont("Helvetica-Bold", 16)
-    c.drawString(50, y, "AI Resume Screening Report")
+    c.drawString(50, y, "AI Resume Screener Report")
 
     y -= 40
     c.setFont("Helvetica", 12)
@@ -34,4 +34,4 @@ def download_report(match_score: float, matched_skills: str, missing_skills: str
         y -= 15
 
     c.save()
-    return FileResponse(temp.name, filename="resume_report.pdf")
+    return FileResponse(temp.name, filename="ai_resume_screener_report.pdf")
