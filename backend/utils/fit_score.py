@@ -1,5 +1,4 @@
-from utils.skills import get_skill_weight
-
+from backend.utils.skills import get_skill_weight
 # ROLE PREDICTION
 def predict_role_category(text: str) -> str:
     text = text.lower()

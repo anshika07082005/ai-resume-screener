@@ -1,0 +1,18 @@
+services:
+  backend:
+    build: .
+    container_name: ai-hiring-intelligence-backend
+
+    ports:
+      - "8000:8000"
+
+    environment:
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      JWT_ALGORITHM: ${JWT_ALGORITHM:-HS256}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-1440}
+      DATABASE_URL: sqlite:///./users.db
+
+    volumes:
+      - ./users.db:/app/users.db
+
+    restart: unless-stopped

@@ -1,74 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>AI Resume Screening</title>
-  <link rel="stylesheet" href="style.css">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>AI Resume Screener</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css?v=4"
+  >
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
+
 <body>
+
   <div class="container">
 
     <header>
-      <h1>AI Resume Screening</h1>
+      <h1>AI Resume Screener</h1>
       <p>Analyze your resume against job descriptions</p>
     </header>
 
+
+    <!-- INPUT CARD -->
+
     <div class="card">
+
       <label>Upload Resume (PDF)</label>
-      <input type="file" id="resumeFile" accept=".pdf">
+
+      <input
+        type="file"
+        id="resumeFile"
+        accept=".pdf"
+      >
+
 
       <label>Upload Job Description (PDF)</label>
-      <input type="file" id="jdFile" accept=".pdf">
 
-      <div class="or-divider"><span>OR</span></div>
+      <input
+        type="file"
+        id="jdFile"
+        accept=".pdf"
+      >
+
+
+      <div class="or-divider">
+        <span>OR</span>
+      </div>
+
 
       <label>Paste Job Description</label>
-      <textarea id="jdText"></textarea>
 
-      <button onclick="analyzeResume()">🔍 Analyze Resume</button>
+      <textarea
+        id="jdText"
+        placeholder="Paste the complete job description here..."
+      ></textarea>
+
+
+      <button
+        id="analyzeBtn"
+        onclick="analyzeResume()"
+      >
+        🔍 Analyze Resume
+      </button>
+
+
+      <p
+        id="analysisMessage"
+        class="analysis-message"
+      ></p>
+
     </div>
 
-    <div id="results" class="results-grid hidden">
+
+    <!-- SCREENING RESULT -->
+
+    <div
+      id="results"
+      class="results-grid hidden"
+    >
 
       <!-- LEFT -->
+
       <div class="card">
+
         <h3>✅ Analysis Complete</h3>
 
-        <p><strong>Match Score:</strong> <span id="matchScore"></span>%</p>
-        <p id="predictedRole"></p>
-        <p id="atsScore"></p>
 
-        <h4>Matched Skills</h4>
+        <div class="result-summary">
+
+          <p>
+            <strong>Candidate:</strong>
+            <span id="candidateName">N/A</span>
+          </p>
+
+          <p>
+            <strong>Job Role:</strong>
+            <span id="jobTitle">N/A</span>
+          </p>
+
+          <p>
+            <strong>Match Score:</strong>
+            <span id="matchScore">0</span>%
+          </p>
+
+          <p>
+            <strong>Recommendation:</strong>
+
+            <span
+              id="recommendation"
+              class="recommendation-badge"
+            >
+              N/A
+            </span>
+          </p>
+
+        </div>
+
+
+        <h4>Matched Required Skills</h4>
         <div id="matchedSkills"></div>
 
-        <h4>Missing Skills</h4>
+
+        <h4>Missing Required Skills</h4>
         <div id="missingSkills"></div>
 
-        <h4>Resume Suggestions</h4>
-        <ul id="resumeSuggestions"></ul>
 
-        <h4>Learning Roadmap</h4>
-        <div id="learningRoadmap"></div>
+        <h4>Matched Preferred Skills</h4>
+        <div id="preferredSkills"></div>
+
+
+        <h4>Candidate Strengths</h4>
+        <ul id="strengthsList"></ul>
+
+
+        <h4>Areas for Improvement</h4>
+        <ul id="weaknessesList"></ul>
+
       </div>
 
-      <!-- RIGHT -->
-      <div class="card center">
-        <h3>Skill Match Visualization</h3>
-        <canvas id="skillChart" width="220" height="220"></canvas>
 
-        <button onclick="downloadReport()">⬇ Download Report</button>
+      <!-- RIGHT -->
+
+      <div class="card center">
+
+        <h3>Skill Match Visualization</h3>
+
+        <canvas
+          id="skillChart"
+          width="220"
+          height="220"
+        ></canvas>
+
+
+        <div class="score-breakdown">
+
+          <h4>Score Breakdown</h4>
+
+          <div class="score-row">
+            <span>Required Skills</span>
+            <strong id="skillsScore">0%</strong>
+          </div>
+
+          <div class="score-row">
+            <span>Preferred Skills</span>
+            <strong id="preferredScore">0%</strong>
+          </div>
+
+          <div class="score-row">
+            <span>Semantic Similarity</span>
+            <strong id="semanticScore">0%</strong>
+          </div>
+
+          <div class="score-row">
+            <span>Projects</span>
+            <strong id="projectsScore">0%</strong>
+          </div>
+
+          <div class="score-row">
+            <span>Experience</span>
+            <strong id="experienceScore">0%</strong>
+          </div>
+
+          <div class="score-row">
+            <span>Education</span>
+            <strong id="educationScore">0%</strong>
+          </div>
+
+          <div class="score-row">
+            <span>Certifications</span>
+            <strong id="certificationsScore">0%</strong>
+          </div>
+
+        </div>
+
+
+        <button onclick="downloadReport()">
+          ⬇ Download Report
+        </button>
+
+
+        <button
+          id="interviewBtn"
+          class="secondary-action-btn"
+          onclick="generateInterview()"
+        >
+          🎯 Generate Interview Questions
+        </button>
+
       </div>
 
     </div>
 
+
+    <!-- INTERVIEW INTELLIGENCE -->
+
+    <div
+      id="interviewSection"
+      class="card hidden"
+    >
+
+      <h3>
+        🎯 Interview Intelligence
+      </h3>
+
+      <p
+        id="interviewSubtitle"
+        style="color:#6b7280;"
+      >
+        Personalized interview questions
+      </p>
+
+
+      <p
+        id="interviewMessage"
+        class="analysis-message"
+      ></p>
+
+
+      <div class="interview-grid">
+
+        <div class="interview-category">
+
+          <h4>Technical Questions</h4>
+
+          <ol id="technicalQuestions"></ol>
+
+        </div>
+
+
+        <div class="interview-category">
+
+          <h4>Project Questions</h4>
+
+          <ol id="projectQuestions"></ol>
+
+        </div>
+
+
+        <div class="interview-category">
+
+          <h4>Skill & Gap Questions</h4>
+
+          <ol id="skillGapQuestions"></ol>
+
+        </div>
+
+
+        <div class="interview-category">
+
+          <h4>Experience Questions</h4>
+
+          <ol id="experienceQuestions"></ol>
+
+        </div>
+
+
+        <div
+          class="interview-category interview-category-full"
+        >
+
+          <h4>Behavioral Questions</h4>
+
+          <ol id="behavioralQuestions"></ol>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- HISTORY -->
+
+    <div class="card history-section">
+
+      <div class="history-header">
+
+        <div>
+          <h3>Screening History</h3>
+          <p>Previously analyzed candidates</p>
+        </div>
+
+
+        <button
+          class="history-refresh-btn"
+          onclick="loadHistory()"
+        >
+          Refresh
+        </button>
+
+      </div>
+
+
+      <div id="historyContent">
+
+        <p class="history-empty">
+          Loading screening history...
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- LOGOUT -->
+
     <div class="logout-container">
-      <button class="logout-btn" onclick="logout()">Logout</button>
+
+      <button
+        class="logout-btn"
+        onclick="logout()"
+      >
+        Logout
+      </button>
+
     </div>
 
   </div>
 
-  <script src="script.js"></script>
+
+  <!-- VERSION PARAMETER PREVENTS OLD JS CACHE -->
+
+  <script src="script.js?v=4"></script>
+
 </body>
+
 </html>

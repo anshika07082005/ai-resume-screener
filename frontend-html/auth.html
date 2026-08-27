@@ -1,28 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <title>Login / Register</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
 </head>
 
+
 <body class="auth-body">
+
   <div class="auth-container">
 
-    <h2 id="authTitle">Login</h2>
+    <h2 id="authTitle">
+      Login
+    </h2>
 
-    <input id="email" placeholder="Email">
-    <input id="password" type="password" placeholder="Password">
+    <input
+      id="email"
+      type="email"
+      placeholder="Email"
+      autocomplete="email"
+    >
 
-    <button onclick="handleAuth()">Login</button>
+    <input
+      id="password"
+      type="password"
+      placeholder="Password"
+      autocomplete="current-password"
+    >
+
+    <button
+      id="authBtn"
+      onclick="handleAuth()"
+    >
+      Login
+    </button>
+
 
     <div class="auth-switch">
-      <span onclick="toggleAuth()">Switch to Register</span>
+
+      <span
+        id="authSwitchText"
+        onclick="toggleAuth()"
+      >
+        Switch to Register
+      </span>
+
     </div>
+
 
     <p id="authMessage"></p>
 
   </div>
 
+
   <script src="auth.js"></script>
+
 </body>
+
 </html>
