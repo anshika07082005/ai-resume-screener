@@ -67,6 +67,7 @@ app.add_middleware(
         "http://localhost:8000",
         "https://amazing-taiyaki-b71687.netlify.app",
     ],
+    allow_origin_regex=r"https://.*\.netlify\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -83,7 +84,7 @@ Base.metadata.create_all(
 
 
 # ============================================================
-# AUTH
+# AUTHENTICATION
 # ============================================================
 
 app.include_router(
@@ -130,7 +131,7 @@ app.include_router(
 
 
 # ============================================================
-# SYSTEM
+# SYSTEM ENDPOINTS
 # ============================================================
 
 @app.get("/")
