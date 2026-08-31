@@ -127,6 +127,19 @@ The upgraded version extends the project into an AI-powered hiring intelligence 
 
 ---
 
+## 📸 Screenshots
+
+### Authentication
+![Authentication](screenshots/login.png)
+
+### Candidate Screening
+![Candidate Screening](screenshots/screening-result.png)
+
+### Interview Intelligence
+![Interview Intelligence](screenshots/interview-intelligence.png)
+
+---
+
 ## 👩‍💻 Author
 
 **Anshika Rawat**
