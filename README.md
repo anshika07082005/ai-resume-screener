@@ -127,6 +127,15 @@ The upgraded version extends the project into an AI-powered hiring intelligence 
 
 ---
 
+## 🌐 Live Demo
+
+The application is deployed with:
+
+- **Frontend:** Netlify
+- **Backend:** Render
+- **Live Application:** https://amazing-taiyaki-b71687.netlify.app/auth.html
+
+
 ## 📸 Screenshots
 
 ### Authentication
